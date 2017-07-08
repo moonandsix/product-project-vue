@@ -29,7 +29,9 @@
           <div class="item1">
             <h3>{{item.title}}</h3>
             <p>{{item.describe}}</p>
-            <button> <router-link :to="item.href">立即购买</router-link></button>
+            <button>
+              <router-link :to="item.href">立即购买</router-link>
+            </button>
           </div>
         </div>
       </div>
@@ -40,102 +42,114 @@
 <script>
   import carouselBySelf from '../components/carousel-by-self'
   export default{
-    components:{
+    components: {
       carouselBySelf
     },
     data(){
-          return{
-            productList:'',
-            news:'',
-            show:'',
-            slides:[],
-            timeGap:6000
-          }
-      },
+      return {
+        productList: '',
+        news: '',
+        show: '',
+        slides: [],
+        timeGap: 6000,
+      }
+    },
     created(){
-      let self=this;
+      let self = this;
       this.$http.get('/api/show')
         .then(function (response) {
-          self.show=response.data.value;
+          self.show = response.data.value;
         });
       this.$http.get('/api/news')
         .then(function (response) {
-          self.news=response.data.value;
+          self.news = response.data.value;
         });
       this.$http.get('/api/productList')
         .then(function (response) {
-          self.productList=response.data.value
+          self.productList = response.data.value
         });
       this.$http.get('/api/slides')
         .then(function (response) {
-          self.slides=response.data.value;
+          self.slides = response.data.value;
         });
     },
-    methods:{
-    }
+    methods: {}
   }
 </script>
 
 <style scoped>
-  .left-2{
+  .left-2 {
     float: left;
     width: 400px;
   }
-  .right1{
+
+  .right1 {
     float: left;
     width: 900px;
   }
 
-  li{
+  li {
     list-style: none;
   }
-  .center{
+
+  .center {
     margin: 0px auto;
     width: 1200px;
   }
-  .left1{
+
+  .left1 {
     width: 270px;
     float: left;
   }
-  .left-top-title{
+
+  .left-top-title {
     background-color: #4fc08d;
     font-size: 16px;
     font-weight: bold;
     color: white;
   }
-  .hot{
+
+  .hot {
     background-color: red;
     color: white;
   }
-  .oneItem{
+
+  .oneItem {
     padding: 5px;
   }
-  .itemTitle{
-    font-size : 14px;
-    font-weight : bold;
+
+  .itemTitle {
+    font-size: 14px;
+    font-weight: bold;
   }
-  .left-bottom,.left-top-title{
+
+  .left-bottom, .left-top-title {
     margin: 20px;
   }
-  .img-1{
+
+  .img-1 {
     background-repeat: no-repeat;
     background-image: url("../assets/images/1.png");
   }
-  .img-2{
+
+  .img-2 {
     background-image: url("../assets/images/2.png");
     background-repeat: no-repeat;
 
   }
-  .img-3{
+
+  .img-3 {
     background-image: url("../assets/images/3.png");
     background-repeat: no-repeat;
 
   }
-  .img-4{
+
+  .img-4 {
     background-image: url("../assets/images/4.png");
     background-repeat: no-repeat;
   }
-  .item1{
+
+  .item1 {
     margin-left: 120px;
   }
 </style>
